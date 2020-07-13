@@ -1,9 +1,7 @@
 
-# OpenTripPlanner
+# Introduction
 
-#1. Introduction
-
-This document describes how to set up OpenTripPlanner (OTP) with R to perform routing requests and accessibility analysis. The package OpenTripPlanner for R is used here. The Package provides wrappers for making http POST requests to a local OTP server as well as functions used for building a graph and loading it. All is based on a runnable Java JAR file which was created by myself based on the current development Java OTP developer version (as of April 2020).
+This readme describes how to set up OpenTripPlanner (OTP) with R to perform routing requests and accessibility analysis. The package OpenTripPlanner for R is used here. The Package provides wrappers for making http POST requests to a local OTP server as well as functions used for building a graph and loading it. All is based on a runnable Java JAR file which was created by myself based on the current development Java OTP developer version (as of April 2020).
 
 Functionalities directly available from the OpenTripPlanner R package:
 
@@ -19,7 +17,7 @@ Functionalities which are extendable from the OpenTripPlanner R package:
 
 -Virtually any type of accessibility analysis at any scale.
 
-#2. Installation of resources
+# Installation of resources
 
 #### Java
 
@@ -69,7 +67,7 @@ For starting to understand the functioning of OTP, this tutorial is recommended:
 IMPORTANT: The tutorial above is based on the otpr package which has different functions than the opentripplanner package. The opentripplanner package provides the same functions than the otpr package, only with different names and more functionalities. For route requests, both basically make a http GET request, which could as well be send directly using functions from the httr package
 
 
-#3. Creating a graph
+# Creating a graph
 
 A graph can be created in R using the otp\_build\_graph() function. To create a graph, a main folder has to be created with a subfolder named &quot;graphs&quot; which contains folders with the names of each graph. In my case this looks something like:
 
@@ -129,26 +127,26 @@ Memory allocation
 If _-inMemory_ is used, the Grizzly server will start running on port 8080.
 
 
-#4. Local server
+# Local server
 
 The local server running locally has a GUI available at localhost:8080. It has several features, including personalized routing profiles as can be seen below for the example of bikes:
 
-![](Images/2.JPG)
+![](Images/2.jpg)
 
 This feature is particularly important for validation of the results since it allows for a quick visualization of the routes.
 
 
-#5. Validation of elevation data
+# Validation of elevation data
 
 Especially the routing for slow modes should be adapted in the Swiss case. This is exemplified below in the case of a bike route, which OTP standardly routes through hiking trails. As a comparison the OTP route is followed by Google Maps results for the same OD pair.
 
-![](Images/3.JPG)
+![](Images/3.jpg)
 
-![](Images/4.JPG)
+![](Images/4.jpg)
 
 After increasing the weight of the &quot;bike friendly&quot; attribute, the following route is given by OTP, which is more realistic:
 
-![](Images/5.JPG)
+![](Images/5.jpg)
 
 A quick comparison of travel times and values give the following results:
 
