@@ -153,7 +153,6 @@ A quick comparison of travel times and values give the following results:
 |   | km | Time (h) | climb | avg. km/h |
 | --- | --- | --- | --- | --- |
 | OTP (No elevation) | 7.79\* | 0.5 | 0m | 15.7 |
-| --- | --- | --- | --- | --- |
 | OTP (Elevation) | 13.76 | 2.75 | 968m | 5.0 |
 | GoogleMaps | 14.8 | 2.12 | 968m | 6.9 |
 
