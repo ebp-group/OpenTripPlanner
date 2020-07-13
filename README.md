@@ -45,9 +45,7 @@ As of today (June 2020) the most actual version there has a bug preventing to in
 
 [https://github.com/ibi-group/OpenTripPlanner](https://github.com/ibi-group/OpenTripPlanner)
 
-The .jar file is available at:
-
-O:\OpenTripPlanner\otp-1.4.1-SNAPSHOT-shaded.jar
+The .jar file is available in this repository. 
 
 As long as elevation data is unimportant for routing (eg. no hills in the study area possibly affecting routing for slow modes) the actual version from Maven can directly be downloaded.
 
