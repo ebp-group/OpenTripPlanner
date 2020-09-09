@@ -9,7 +9,6 @@ library(tmaptools)
 library(opentripplanner)
 library(devtools)
 library(progress)
-library(otpr)
 library(gtfsr)
 library(httr)
 library(gtfsr)
@@ -18,8 +17,53 @@ library(leaflet)
 library(rgdal)
 library(geojson)
 library(htmlwidgets)
+library(sf)
 
-setwd("C:\\Users\\lmf\\Desktop\\OTPGraphEclipse")
+setwd("O:\\OpenTripPlanner")
+
+
+#Load graph. ATTENTION: Folder structure must correspond to OTP template!
+opentripplanner::otp_setup("O:\\OpenTripPlanner\\JAR\\otp-1.4.1-SNAPSHOT-shaded.jar", dir=getwd(), router="CH2019Elev", memory=30000)
+
+#Now that the OTP router is running on localhost:;8080, connect to this local server to perform requests. 
+otpcon <- otp_connect(hostname ="localhost",router ="CH2019Elev",
+                      port =8080,ssl =FALSE)
+
+otp_stop()
+
+
+#Make a routing request
+depTime <- as.POSIXct("2019-08-04 09:29:49", otpcon$timezone)
+from= c(8.550, 47.365)
+to= c(8.469, 47.510)
+
+route_test <- otp_plan(otpcon, from, to, mode="BICYCLE", date_time = depTime )
+
+
+
+#Plot results
+tmap_mode("view") 
+qtm(sf::st_zm(route_test))
+
+
+
+
+
+
+
+
+#Make a routing request
+depTime <- as.POSIXct("2019-10-09 11:29:49", otpcon$timezone)
+from= c(8.550, 47.365)
+to= c(8.5068, 47.3894)
+
+route_test <- otp_plan(otpcon, from, to, mode="TRANSIT", date_time = depTime )
+
+#Plot results
+tmap_mode("view") 
+qtm(sf::st_zm(route_test))
+
+
 
 
 
